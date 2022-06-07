@@ -1,5 +1,15 @@
 import React from "react";
-
-export default function Button() {
-  return <div>Button</div>;
+import propTypes from "prop-types";
+export default function Button(props) {
+  const className = ["button"];
+  if (props.isPrimary) className.push("button-primary");
+  if (props.isWideMobile) className.push("button-wide-mobile");
+  if (props.isSmall) className.push("button-sm");
+  return <button className={className.join(" ")}>{props.children}</button>;
 }
+
+Button.propTypes = {
+  isPrimary: propTypes.bool,
+  isWideMobile: propTypes.bool,
+  isSmall: propTypes.bool,
+};
